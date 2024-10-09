@@ -1,15 +1,20 @@
 Overview:
 - Windows 10 works officially and for free
-- If you have Windows 11 or Windows Server, you can use unofficial methods to install them
+- If you have ISOs for Windows 11 or Windows Server, you can use unofficial methods to install them
 - Windows 11 has unmet security requirements which you must bypass during installation
 - Windows Server has looser requirements but installation may require an external keyboard
 
 Windows 10:
-- Easy, use Boot Camp Assistant (official method)
-- Run Apple Software Update, restart and repeat until no further updates
-- Run Windows Update, restart and repeat until no further updates
+- Easy and official. Windows 10 is also free
 
-Upgrade to Windows 11: https://www.reddit.com/r/MacOS/comments/18ht14d/boot_camp_easy_install_and_upgrade_for_windows_11/
+- In MacOS, use Boot Camp Assistant to install Windows 10 on a new partition called "BOOTCAMP"
+- After Windows 10 is installed, run Apple Software Update. Restart and repeat until no further updates remain
+- Run Windows Update, restart and repeat until no further updates remain. You can install optional updates too
+
+Upgrade to Windows 11:
+- Not officially supported by Apple, but can work without third-party software
+- Source: https://www.reddit.com/r/MacOS/comments/18ht14d/boot_camp_easy_install_and_upgrade_for_windows_11/
+
 - Save Windows support software to a USB from Boot Camp Assistant
 - Install and fully update Windows 10 as above
 - Download and mount the Windows 11 ISO
@@ -19,6 +24,9 @@ Upgrade to Windows 11: https://www.reddit.com/r/MacOS/comments/18ht14d/boot_camp
 - After Windows 11 is installed, run setup.exe in the Windows support software to install Apple software for your device
 
 Upgrade to Windows Server (with at least an external keyboard):
+- Not officially supported by Apple, but can work without third-party software
+- Drivers for keyboard and touchpad may not work out of the box, either by this method or by using a bootable USB
+
 - Save Windows support software to a USB from Boot Camp Assistant
 - Install and fully update Windows 10 as above
 - Download and mount the Windows Server ISO
@@ -28,6 +36,8 @@ Upgrade to Windows Server (with at least an external keyboard):
 - After Windows Server is installed, run setup.exe in the Windows support software to install Apple software for your device
 
 Upgrade to Windows Server (with all Apple drivers installed out of the box):
+- Not officially supported by Apple, but can work without third-party software
+
 - Save Windows support software to a USB from Boot Camp Assistant
 - Install and fully update Windows 10 as above
 - Create the folders "ISO", "Mount" and "Drivers" in a directory
@@ -39,6 +49,6 @@ Upgrade to Windows Server (with all Apple drivers installed out of the box):
 - Execute "Mount-WindowsImage -Path MOUNTPATH -ImagePath ISOPATH \install.wim -Index INDEX" to mount the copied ISO in the "Mount" folder
 - Execute "Add-WindowsDriver -Path MOUNTPATH -Driver DRIVERSPATH -Recurse -ForceUnsigned" to install the drivers on this ISO
 - Execute "Dismount-WindowsImage -Path MOUNTPATH –Save" to unmount and save changes to this ISO
-- Use a third-party software to turn the folder "Mount" into an ISO. You do not need to make this ISO bootable
+- Mount the ISO in the "Mount" folder. You may need to package this folder into an ISO first. If you do, this ISO does not need to be bootable for the next steps
 - Mount the new ISO and run setup.exe to install
 - After Windows Server is installed, run setup.exe in the Windows support software to install Apple software for your device
