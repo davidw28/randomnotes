@@ -1,0 +1,44 @@
+Overview:
+- Windows 10 works officially and for free
+- If you have Windows 11 or Windows Server, you can use unofficial methods to install them
+- Windows 11 has unmet security requirements which you must bypass during installation
+- Windows Server has looser requirements but installation may require an external keyboard
+
+Windows 10:
+- Easy, use Boot Camp Assistant (official method)
+- Run Apple Software Update, restart and repeat until no further updates
+- Run Windows Update, restart and repeat until no further updates
+
+Upgrade to Windows 11: https://www.reddit.com/r/MacOS/comments/18ht14d/boot_camp_easy_install_and_upgrade_for_windows_11/
+- Save Windows support software to a USB from Boot Camp Assistant
+- Install and fully update Windows 10 as above
+- Download and mount the Windows 11 ISO
+- Run CMD as Administrator
+- Execute "D:" or whatever the letter of the mounted ISO is
+- Execute "setup.exe /product server" to run the installer with relaxed hardware requirement checks
+- After Windows 11 is installed, run setup.exe in the Windows support software to install Apple software for your device
+
+Upgrade to Windows Server (with at least an external keyboard):
+- Save Windows support software to a USB from Boot Camp Assistant
+- Install and fully update Windows 10 as above
+- Download and mount the Windows Server ISO
+- Open setup.exe to run the installer
+  - An external keyboard may be required, as the keyboard and touchpad did not work for me out of the box.
+  - An external mouse will get you through the installer, but may not let you past the ctrl-alt-del requirement on the login page
+- After Windows Server is installed, run setup.exe in the Windows support software to install Apple software for your device
+
+Upgrade to Windows Server (with all Apple drivers installed out of the box):
+- Save Windows support software to a USB from Boot Camp Assistant
+- Install and fully update Windows 10 as above
+- Create the folders "ISO", "Mount" and "Drivers" in a directory
+- Download and mount the Windows Server ISO
+- Copy all the files from the mounted Windows Server ISO to the "ISO" folder
+- Run CMD as Administrator
+- Execute "Export-WindowsDriver –Online -Destination DRIVERSPATH" to extract third-party drivers to the "Drivers" folder
+- Execute "Get-WindowsImage -ImagePath ISOPATH\install.wim" to find the index of the version of Windows you wish to install
+- Execute "Mount-WindowsImage -Path MOUNTPATH -ImagePath ISOPATH \install.wim -Index INDEX" to mount the copied ISO in the "Mount" folder
+- Execute "Add-WindowsDriver -Path MOUNTPATH -Driver DRIVERSPATH -Recurse -ForceUnsigned" to install the drivers on this ISO
+- Execute "Dismount-WindowsImage -Path MOUNTPATH –Save" to unmount and save changes to this ISO
+- Use a third-party software to turn the folder "Mount" into an ISO. You do not need to make this ISO bootable
+- Mount the new ISO and run setup.exe to install
+- After Windows Server is installed, run setup.exe in the Windows support software to install Apple software for your device
